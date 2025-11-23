@@ -13,7 +13,7 @@ LABEL maintainer="https://github.com/ehfd,https://github.com/danisla"
 
 ARG DEBIAN_FRONTEND=noninteractive
 # Configure rootless user environment for constrained conditions without escalated root privileges inside containers
-ARG TZ=UTC
+ARG TZ=Asia/ShangHai
 ENV PASSWD=mypasswd
 RUN apt-get clean && apt-get update && apt-get dist-upgrade -y && apt-get install --no-install-recommends -y \
         apt-utils \
@@ -27,7 +27,7 @@ RUN apt-get clean && apt-get update && apt-get dist-upgrade -y && apt-get instal
         udev \
         tzdata && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /var/cache/debconf/* /var/log/* /tmp/* /var/tmp/* && \
-    locale-gen en_US.UTF-8 && \
+    locale-gen en_US.UTF-8 zh_CN.UTF-8 && \
     ln -snf "/usr/share/zoneinfo/${TZ}" /etc/localtime && echo "${TZ}" > /etc/timezone && \
     # Only use sudo-root for root-owned directory (/dev, /proc, /sys) or user/group permission operations, not for apt-get installation or file/directory operations
     mv -f /usr/bin/sudo /usr/bin/sudo-root && \
@@ -43,9 +43,9 @@ RUN apt-get clean && apt-get update && apt-get dist-upgrade -y && apt-get instal
     chmod -f 2755 /var/local /var/mail /usr/sbin/unix_chkpwd /usr/sbin/pam_extrausers_chkpwd /usr/bin/expiry /usr/bin/chage || echo 'Failed to set chmod setgid for some paths'
 
 # Set locales
-ENV LANG="en_US.UTF-8"
-ENV LANGUAGE="en_US:en"
-ENV LC_ALL="en_US.UTF-8"
+ENV LANG="zh_CN.UTF-8"
+ENV LANGUAGE="zh_CN:zh"
+ENV LC_ALL="zh_CN.UTF-8"
 
 USER 1000
 # Use BUILDAH_FORMAT=docker in buildah
