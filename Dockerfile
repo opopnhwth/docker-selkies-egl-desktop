@@ -44,7 +44,7 @@ RUN apt-get clean && apt-get update && apt-get dist-upgrade -y && apt-get instal
 
 # Set locales
 ENV LANG="zh_CN.UTF-8"
-ENV LANGUAGE="zh_CN:zh"
+ENV LANGUAGE="zh_CN.UTF-8"
 ENV LC_ALL="zh_CN.UTF-8"
 
 USER 1000
