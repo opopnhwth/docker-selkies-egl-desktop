@@ -3,8 +3,8 @@
 # file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
 # Supported base images: Ubuntu 24.04, 22.04, 20.04
-ARG DISTRIB_IMAGE=ubuntu
-ARG DISTRIB_RELEASE=24.04
+ARG DISTRIB_IMAGE=debian
+ARG DISTRIB_RELEASE=trixie
 FROM ${DISTRIB_IMAGE}:${DISTRIB_RELEASE}
 ARG DISTRIB_IMAGE
 ARG DISTRIB_RELEASE
